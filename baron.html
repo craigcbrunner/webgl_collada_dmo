@@ -24,10 +24,16 @@
 			}
 
 			a { color: red }
+			
+			.texture-loader {
+				height: 1px;
+				width: 1px;
+			}
 		</style>
 	</head>
 
 	<body>
+		<img src = "SRU_Baron_TX_CM.bmp" class="texture-loader"/>
 		<div id="info">
 			<a href="http://threejs.org" target="_blank">three.js</a> - Baron from League of Legends by Craig C Brunner
 		</div>
@@ -49,7 +55,8 @@
 
 			var container, stats;
 
-			var camera, controls, scene, renderer, objects;
+			var camera, controls, scene, renderer, objects, axis;
+			var oldY = 0;
 			var particleLight, pointLight;
 			var dae;
 
@@ -96,6 +103,7 @@
   				controls.addEventListener( 'change', render );
 
 				scene = new THREE.Scene();
+				axis = new THREE.Vector3(1, 0, 0);
 
 				// Add Blender exported Collada model
 
@@ -170,6 +178,7 @@
 				// camera.position.z = Math.sin( timer ) * 10;
 
 				camera.lookAt( scene.position );
+
 
 
 				renderer.render( scene, camera );
